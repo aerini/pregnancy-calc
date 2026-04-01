@@ -12,12 +12,13 @@
             --highlight-color: #fffceb;
             --early-color: #f4f7ff;
             --late-color: #fff5f7;
-            --text-color: #444;
+            --text-color: #333;
             --border-color: #f0f0f0;
         }
+        * { box-sizing: border-box; }
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
-            line-height: 1.5;
+            line-height: 1.4;
             color: var(--text-color);
             max-width: 1200px;
             margin: 0 auto;
@@ -26,106 +27,125 @@
         }
         .container {
             background: white;
-            padding: 30px 15px;
+            padding: 25px 15px;
             border-radius: 30px;
-            box-shadow: 0 15px 45px rgba(251, 111, 146, 0.1);
+            box-shadow: 0 10px 30px rgba(251, 111, 146, 0.08);
+            width: 100%;
         }
         .main-title {
             text-align: center;
             color: var(--accent-color);
             margin-bottom: 5px;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             letter-spacing: -1px;
+            word-break: keep-all;
         }
         .main-title span {
             color: #ff4d6d;
             font-weight: 900;
-            text-decoration: underline;
-            text-underline-offset: 5px;
+            border-bottom: 3px solid var(--secondary-color);
         }
-        .subtitle { text-align: center; color: #999; margin-bottom: 30px; font-size: 0.9rem; }
+        .subtitle { text-align: center; color: #999; margin-bottom: 25px; font-size: 0.85rem; }
         
         .config-panel {
             background: #fffafa;
             padding: 25px;
             border-radius: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             border: 1px solid var(--secondary-color);
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
             gap: 20px;
         }
-        .input-group { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+        .input-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 8px; 
+            width: 100%; 
+            max-width: 300px;
+            align-items: center;
+        }
         .input-group label { font-weight: 800; font-size: 0.9rem; color: #666; }
         
         input {
-            padding: 12px 15px;
+            padding: 12px;
             border: 2px solid var(--secondary-color);
             border-radius: 12px;
             font-size: 1rem;
             outline: none;
-            transition: 0.3s;
-            text-align: center;
+            width: 100%;
             background: white;
+            text-align: center;
+            transition: all 0.3s ease;
         }
-        input:focus { border-color: var(--primary-color); box-shadow: 0 0 10px rgba(255, 143, 171, 0.2); }
-        #babyNickname { max-width: 120px; font-weight: 700; color: #ff4d6d; }
-        #dueDate { max-width: 180px; }
+        input:focus { border-color: var(--primary-color); background: #fff; box-shadow: 0 4px 12px rgba(255, 143, 171, 0.15); }
 
         .table-wrapper {
-            max-height: 65vh;
+            max-height: 60vh;
             overflow: auto;
             border: 1px solid var(--border-color);
-            border-radius: 20px;
-            margin-bottom: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
             -webkit-overflow-scrolling: touch;
         }
-        table { width: 100%; border-collapse: collapse; min-width: 750px; table-layout: fixed; }
+        table { width: 100%; border-collapse: collapse; min-width: 650px; table-layout: fixed; }
         thead th {
             position: sticky; top: 0; background: #fff0f3;
             color: var(--accent-color); z-index: 10;
-            padding: 15px 5px; font-size: 0.85rem; border-bottom: 2px solid var(--secondary-color);
+            padding: 12px 5px; font-size: 0.8rem; border-bottom: 2px solid var(--secondary-color);
         }
-        td { padding: 15px 8px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: 0.95rem; word-break: keep-all; }
+        td { padding: 10px 5px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: 0.85rem; word-break: break-all; }
         
         .row-early { background-color: var(--early-color); } 
         .row-late { background-color: var(--late-color); }
-        .row-today { 
-            background-color: #fff9db !important; 
-            z-index: 5;
-            position: relative;
-        }
+        .row-today { background-color: #fff9db !important; position: relative; }
         
-        .month-cell { font-weight: 800; color: #777; background: #fafafa; border-right: 1px solid #eee; font-size: 0.9rem; }
-        .week-range { font-weight: 700; color: var(--accent-color); font-size: 1rem; }
-        .date-range { font-size: 0.8rem; color: #888; display: block; margin-top: 2px; }
+        .month-cell { font-weight: 800; color: #777; background: #fafafa; border-right: 1px solid #eee; font-size: 0.8rem; }
+        .week-range { font-weight: 700; color: var(--accent-color); font-size: 0.85rem; }
+        .date-range { font-size: 0.75rem; color: #888; display: block; margin-top: 2px; }
         
-        .badge { display: inline-block; padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 800; margin: 2px; }
+        .badge { display: inline-block; padding: 2px 6px; border-radius: 5px; font-size: 0.65rem; font-weight: 800; margin: 1px; }
         .badge-reduction { background: #ff4d6d; color: white; }
         .badge-leave { background: #2b9348; color: white; }
         .badge-today { background: #333; color: white; }
 
-        .legend { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-bottom: 25px; font-size: 0.8rem; justify-content: center; }
-        .legend-item { display: flex; align-items: center; gap: 6px; }
-        .box { width: 14px; height: 14px; border-radius: 4px; border: 1px solid #ddd; }
+        .legend { display: flex; flex-wrap: wrap; gap: 8px 15px; margin-bottom: 20px; font-size: 0.75rem; justify-content: center; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .box { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #ddd; }
 
-        .memo-section { margin-top: 40px; }
-        .memo-label { display:block; margin-bottom:12px; font-weight:800; font-size:1.1rem; color:#555; }
-        textarea { width: 100%; height: 150px; padding: 20px; border-radius: 20px; border: 2px solid #f0f0f0; background:#fafafa; font-family: inherit; font-size: 1rem; outline:none; resize: vertical; transition: 0.3s; }
+        .memo-section { margin-top: 30px; width: 100%; }
+        .memo-label { display:block; margin-bottom:10px; font-weight:800; font-size:1rem; color:#555; }
+        textarea { 
+            width: 100%; 
+            height: 120px; 
+            padding: 15px; 
+            border-radius: 15px; 
+            border: 2px solid #f0f0f0; 
+            background:#fafafa; 
+            font-family: inherit; 
+            font-size: 0.95rem; 
+            outline:none; 
+            resize: none;
+            display: block;
+        }
         textarea:focus { border-color: var(--primary-color); background: white; }
 
-        .footer { margin-top: 50px; padding: 30px; background-color: #f9f9f9; border-radius: 25px; border: 1px solid #eee; }
-        .footer-info { font-size: 0.8rem; color: #888; margin-bottom: 10px; line-height: 1.7; }
+        .footer { margin-top: 40px; padding: 25px; background-color: #f9f9f9; border-radius: 20px; border: 1px solid #eee; }
+        .footer-info { font-size: 0.75rem; color: #888; margin-bottom: 10px; line-height: 1.7; word-break: keep-all; }
+        .footer-info strong { color: #555; display: block; margin-bottom: 5px; font-size: 0.85rem; }
 
-        @media (max-width: 600px) {
-            .main-title { font-size: 1.4rem; }
-            .container { padding: 20px 10px; }
-            thead th { font-size: 0.75rem; }
-            td { font-size: 0.85rem; padding: 12px 5px; }
-            .badge { font-size: 0.65rem; }
-            .config-panel { padding: 15px; gap: 10px; }
-            input { font-size: 0.95rem; }
+        /* PC 화면 데스크탑 최적화 */
+        @media (min-width: 768px) {
+            .config-panel { flex-direction: row; gap: 40px; }
+            .input-group { width: auto; max-width: none; }
+            input { width: 220px; }
+            h1 { font-size: 2.2rem; }
+            td, thead th { font-size: 0.95rem; padding: 15px 10px; }
+            .week-range { font-size: 1rem; }
+            .badge { font-size: 0.75rem; padding: 4px 10px; }
+            .container { padding: 40px; }
         }
     </style>
 </head>
@@ -137,11 +157,11 @@
 
         <div class="config-panel">
             <div class="input-group">
-                <label for="babyNickname">✨ 태명</label>
-                <input type="text" id="babyNickname" maxlength="10" placeholder="태명">
+                <label for="babyNickname">✨ 우리 아기 태명</label>
+                <input type="text" id="babyNickname" maxlength="10" placeholder="태명을 입력하세요">
             </div>
             <div class="input-group">
-                <label for="dueDate">🗓️ 출산예정일</label>
+                <label for="dueDate">🗓️ 출산 예정일</label>
                 <input type="date" id="dueDate">
             </div>
         </div>
@@ -149,35 +169,35 @@
         <div class="legend">
             <div class="legend-item"><div class="box" style="background: var(--early-color);"></div> 1차 단축</div>
             <div class="legend-item"><div class="box" style="background: var(--late-color);"></div> 2차 단축</div>
-            <div class="legend-item"><div class="box" style="background: #fff9db;"></div> 오늘 주차</div>
+            <div class="legend-item"><div class="box" style="background: #fff9db;"></div> 현재 주차</div>
         </div>
 
         <div class="table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 12%;">개월</th>
-                        <th style="width: 30%;">날짜 범위</th>
-                        <th style="width: 23%;">법정 주수</th>
+                        <th style="width: 15%;">개월</th>
+                        <th style="width: 25%;">날짜 범위</th>
+                        <th style="width: 25%;">법정 주수</th>
                         <th style="width: 35%;">내용</th>
                     </tr>
                 </thead>
                 <tbody id="timelineBody">
-                    <!-- 스크립트로 생성 -->
+                    <!-- JS 생성 -->
                 </tbody>
             </table>
         </div>
 
         <div class="memo-section">
             <label class="memo-label">📝 <span id="memoName">우리 아기</span> 마중 기록장</label>
-            <textarea id="memo" placeholder="검진 예약이나 필요한 준비물을 기록하세요. (자동 저장)"></textarea>
+            <textarea id="memo" placeholder="예약일이나 준비물을 자유롭게 기록하세요. (자동 저장)"></textarea>
         </div>
 
         <div class="footer">
-            <p class="footer-info"><strong>📋 법령 참고사항 (근로기준법)</strong></p>
-            <p class="footer-info">1. <strong>단축근무:</strong> 12주 이내 및 32주 이후(실무상 31주 1일~) 하루 2시간 유급 단축 근무가 가능합니다.</p>
-            <p class="footer-info">2. <strong>검진휴가:</strong> 28주까지(4주 1회), 29~36주(2주 1회), 37주 이후(1주 1회) 유급 휴가가 보장됩니다.</p>
-            <p class="footer-info">3. 본 페이지는 참고용이며, 정확한 주수 및 혜택은 의료기관과 사내 규정을 확인하시기 바랍니다.</p>
+            <p class="footer-info"><strong>📋 2026년 법령 및 안내 사항</strong></p>
+            <p class="footer-info">1. <strong>임신 근로시간 단축:</strong> 12주 이내 및 32주 이후(실무상 31주 1일~) 하루 2시간 유급 단축 근무가 가능합니다.</p>
+            <p class="footer-info">2. <strong>태아검진 휴가:</strong> 법적으로 보장되는 <strong>유급휴가</strong>입니다. (28주까지 4주 1회, 29~36주 2주 1회, 37주~ 1주 1회) 사용 시간 및 방법은 <strong>회사와 사전에 협의</strong>하시기 바랍니다.</p>
+            <p class="footer-info">3. 본 페이지는 참고용이며 상세 적용 시점은 의료기관의 진단과 회사의 규정을 우선하여 확인하시기 바랍니다.</p>
         </div>
     </div>
 
@@ -190,17 +210,16 @@
         const memoInput = document.getElementById('memo');
 
         window.onload = () => {
-            const saved = JSON.parse(localStorage.getItem('preg_final_nickname_v2') || '{}');
+            const saved = JSON.parse(localStorage.getItem('preg_master_final_v16') || '{}');
             dueDateInput.value = saved.dueDate || "2026-10-10";
             nicknameInput.value = saved.nickname || "";
             memoInput.value = saved.memo || "";
-            
             updateDisplay();
             updateTimeline();
         };
 
         const saveData = () => {
-            localStorage.setItem('preg_final_nickname_v2', JSON.stringify({
+            localStorage.setItem('preg_master_final_v16', JSON.stringify({
                 dueDate: dueDateInput.value,
                 nickname: nicknameInput.value,
                 memo: memoInput.value
@@ -213,30 +232,19 @@
             memoNameDisplay.textContent = name;
         }
 
-        nicknameInput.addEventListener('input', () => {
-            updateDisplay();
-            saveData();
-        });
-
-        dueDateInput.addEventListener('input', () => {
-            updateTimeline();
-            saveData();
-        });
-
+        nicknameInput.addEventListener('input', () => { updateDisplay(); saveData(); });
+        dueDateInput.addEventListener('input', () => { updateTimeline(); saveData(); });
         memoInput.addEventListener('input', saveData);
 
         function updateTimeline() {
             const dueDateStr = dueDateInput.value;
             if (!dueDateStr) return;
-
             const dueDate = new Date(dueDateStr);
             const startDay = new Date(dueDate);
             startDay.setDate(dueDate.getDate() - 280);
-
             const today = new Date();
             today.setHours(0,0,0,0);
             const todayStatDays = Math.floor((today - startDay) / 86400000);
-
             render(startDay, todayStatDays);
         }
 
@@ -248,7 +256,6 @@
             for (let w = 0; w < 40; w++) {
                 const startDayCount = (w === 0) ? 0 : (w * 7) + 1;
                 const endDayCount = (w + 1) * 7;
-
                 const startDate = new Date(startDay);
                 startDate.setDate(startDay.getDate() + startDayCount);
                 const endDate = new Date(startDay);
@@ -271,9 +278,8 @@
 
                 let infoHtml = "";
                 const babyName = nicknameInput.value.trim() || "아기";
-
-                if (startDayCount === 0) infoHtml += `<span class="badge badge-reduction">1차 단축 시작!</span><br>`;
-                if (startDayCount === 218) infoHtml += `<span class="badge badge-reduction">2차 단축 시작!</span><br>`;
+                if (startDayCount === 0) infoHtml += `<span class="badge badge-reduction">1차 단축 시작</span><br>`;
+                if (startDayCount === 218) infoHtml += `<span class="badge badge-reduction">2차 단축 시작</span><br>`;
 
                 if (w < 28) infoHtml += "검진 4주 1회";
                 else if (w === 28) infoHtml += '<span class="badge badge-leave">2주 1회 변경</span>';
@@ -287,13 +293,11 @@
                 tr.innerHTML += `
                     <td>
                         <span class="week-range">${formatDate(startDate)}~${formatDate(endDate)}</span>
-                        <span class="date-range">(${['일','월','화','수','목','금','토'][startDate.getDay()]}~${['일','월','화','수','목','금','토'][endDate.getDay()]})</span>
                     </td>
                     <td><b>${toWeekStr(startDayCount)}</b><br><small>~${toWeekStr(endDayCount)}</small></td>
-                    <td style="text-align:left; padding-left:10px; font-size:0.85rem;">${infoHtml || '&nbsp;'}</td>
+                    <td style="text-align:left; padding-left:10px; font-size:0.8rem;">${infoHtml || '&nbsp;'}</td>
                 `;
                 timelineBody.appendChild(tr);
-
                 if (isTodayInRange) {
                     setTimeout(() => { tr.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 500);
                 }
